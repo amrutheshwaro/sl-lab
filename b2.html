@@ -1,0 +1,81 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON data</title>
+    <style>
+        table {
+            text-align: center;
+            width: 100%;
+        }
+        td {
+            font-size: xx-large;
+        }
+        th {
+            font-size: x-large;
+            background-color: #4caf50;
+            color: white;
+        }
+        th:hover {
+            background-attachment: #4CA;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align:center;">Hover a Tesla type</h1></br>
+    <table>
+        <tr id="menu"></tr>
+    </table></br>
+    <table class="table" id="dataTable" hidden>
+        <tr><td>Name</td><td id="name"></td></tr>
+        <tr><td>price</td><td id="price"></td></tr>
+        <tr><td>year</td><td id="year"></td></tr>
+    </table>
+    <script>
+        window.onload = function() {
+            models = [
+                {
+                    model: "modelx",
+                    name: "Model X",
+                    price: 50000,
+                    year: "2018"
+                },
+                {
+                    model: "modely",
+                    name: "Model Y",
+                    price: 60000,
+                    year: "2019"
+                },
+                {
+                    model: "modelz",
+                    name: "Model Z",
+                    price: 70000,
+                    year: "2020"
+                }
+            ]
+
+            //Generate HTML for menu bar            
+            models.forEach(function(item, index) {
+                menuElement = document.createElement("th");
+                menuElement.id = item.model;
+                menuElement.innerHTML = item.name;
+                document.getElementById("menu").appendChild(menuElement);
+            });
+
+            //Add event handler for mouseover on each model
+            models.forEach(function(item, index) {
+                const element = document.getElementById(item.model);
+                element.onmouseover = function() {
+                    const details = item;
+                    if (details != null) {
+                        document.getElementById("dataTable").removeAttribute('hidden');
+                        document.getElementById("name").innerHTML = details.name;
+                        document.getElementById("price").innerHTML = "$" + details.price;
+                        document.getElementById("year").innerHTML = details.year;
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>

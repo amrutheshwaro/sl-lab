@@ -1,0 +1,51 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Currency conversion</h3>
+    <p>Select a conversion</p>
+    <input type="radio" name="conversion" id="conversion" value="rToD" checked>Rupee to Dollar</input></br>
+    <input type="radio" name="conversion" id="conversion" value="dToR">Dollar to Rupee</input></br>
+    <input type="radio" name="conversion" id="conversion" value="rToE">Rupee to Euro</input></br>
+    <input type="radio" name="conversion" id="conversion" value="eToR">Euro to Rupee</input></br>
+    <p>Enter the value to be converted</p>
+    <input type="number" id="value">
+    <input type="submit" onclick="convert()">
+    <p id="result"></p>
+    <script>
+        convert = function() {
+            const value = parseInt(document.getElementById('value').value);
+            const result = document.getElementById("result");
+            if (isNaN(value)) {
+                alert("Enter the currency value to be converted.");
+            } else {
+                const checkedList = document.querySelectorAll('#conversion');
+                var res;
+                for (checked of checkedList) {
+                    if (checked.checked) {
+                        var option = checked.value;
+                        switch(option) {
+                           case 'rToD':
+                               res = "Dollars: " + (value / 73).toPrecision(3);
+                               break;
+                            case 'dToR': 
+                                res = "Rupees: " + (value * 73).toPrecision(3);
+                                break;
+                            case 'rToE':
+                                res = "Euros: " + (value / 85).toPrecision(3);
+                                break;
+                            case 'eToR':
+                                res = "Rupees: " + (value * 85).toPrecision(3);
+                                break;
+                        }
+                        result.innerHTML = res;
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

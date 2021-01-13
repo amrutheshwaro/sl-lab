@@ -1,0 +1,39 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer feedback</title>
+</head>
+<body>
+    <p>Enter name:</p>
+    <input type="text" id="name" required></br>
+    <p>Enter gender:</p>
+    <label><input type="radio" name="gender" id="gender" value="Male" required>Male</input></label></br>
+    <label><input type="radio" name="gender" id="gender" value="Female">Female</input></label></br>
+    <label><input type="radio" name="gender" id="gender" value="Other">Other</input></label></br>
+    <p>Enter your feedback</p>
+    <textarea rows="9" cols="45" id="feedback" required></textarea></br>
+    <input type="submit" onclick="display()"></br>
+    <p id="custName"></p>
+    <p id="custGender"></p>
+    <p id="custFeedback"></p>
+    <script>
+        display = function() {
+            const name = (document.getElementById('name').value);
+            const feedback = (document.getElementById('feedback').value);
+            if (name === "" || feedback === "") {
+                alert("Enter data in the appropriate fields")
+            } else {
+                document.getElementById('custName').innerHTML = "Name: " + name;
+                const genders = document.querySelectorAll('#gender');
+                for (const gender of genders) {
+                    if (gender.checked) {
+                        document.getElementById('custGender').innerHTML = "Gender: " + gender.value;
+                    }
+                document.getElementById('custFeedback').innerHTML = "Feedback: " + feedback;
+                }            
+            }
+        }
+    </script>
+</body>
+</html>

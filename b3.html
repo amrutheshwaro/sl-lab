@@ -1,0 +1,55 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2 style="text-align: center;">Bakery menu</h2>
+    <h3>Check the ones you want to buy and enter the quantity</h3>
+    <table style="width: 500;">
+        <tr>
+            <td><input type="checkbox" id="checkbox" value="cake">Cake Rs. 100</input></td>
+            <td><input type="number" placeholder="Enter quantity" id="cake"></td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" id="checkbox" value="cookie">Cookie Rs. 10</input></td>
+            <td><input type="number" placeholder="Enter quantity" id="cookie"></td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" id="checkbox" value="bun">Bun Rs. 5</input></td>
+            <td><input type="number" placeholder="Enter quantity" id="bun"></td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" id="checkbox" value="croissant">Croissant Rs. 20</input></td>
+            <td><input type="number" placeholder="Enter quantity" id="croissant"></td>
+        </tr>
+    </table></br>
+    <input type="submit" onclick="calculateBill()">
+    <h3 id="total"></h3>
+    <script>
+        calculateBill = function() {
+            items = {
+                cake: 100,
+                cookie: 10,
+                bun: 5,
+                croissant: 20
+            }
+            var total = 0;
+            const checkedBoxes = document.querySelectorAll("#checkbox")
+            for (const checkedBox of checkedBoxes) {
+                if (checkedBox.checked) {
+                    choice = checkedBox.value;
+                    quantity = parseInt(document.getElementById(choice).value);
+                    if (isNaN(quantity) || quantity == 0) {
+                        alert('Enter the quantity of the checked item.')
+                    } else {
+                        total = total + parseInt(items[choice]) * quantity;
+                    }
+                }
+            }
+            document.getElementById("total").innerHTML = "Total bill: " + total;
+        }
+    </script>
+</body>
+</html>

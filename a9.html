@@ -1,0 +1,30 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Enter a sentence</p>
+    <textarea rows="9" cols="45" id="sentence"></textarea></br>
+    <input type="submit" onclick="calculate()"></br>
+    <p id="longestWord"></p>
+    <script>
+        calculate = function() {
+            const sentenceRaw = document.getElementById("sentence").value;
+            if (sentenceRaw === "") {
+                alert("Enter a sentence in the text box");
+            } else {
+                const sentence = sentenceRaw.split(' ');
+                var longestWord = "";
+                for (word of sentence) {
+                    if (word.length > longestWord.length) {
+                        longestWord = word;
+                    }
+                }
+                document.getElementById('longestWord').innerHTML = "Longest word: " + longestWord;
+            }
+        }
+    </script>
+</body>
+</html>
