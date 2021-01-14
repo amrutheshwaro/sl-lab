@@ -6,25 +6,9 @@
 </head>
 <body>
     <p>Enter a sentence</p>
-    <textarea rows="9" cols="45" id="sentence"></textarea></br>
+    <textarea rows="9" cols="45" id="sentence"></textarea></br></br>
     <input type="submit" onclick="calculate()"></br>
     <p id="longestWord"></p>
-    <script>
-        calculate = function() {
-            const sentenceRaw = document.getElementById("sentence").value;
-            if (sentenceRaw === "") {
-                alert("Enter a sentence in the text box");
-            } else {
-                const sentence = sentenceRaw.split(' ');
-                var longestWord = "";
-                for (word of sentence) {
-                    if (word.length > longestWord.length) {
-                        longestWord = word;
-                    }
-                }
-                document.getElementById('longestWord').innerHTML = "Longest word: " + longestWord;
-            }
-        }
-    </script>
+    <script src="a9.js"></script>
 </body>
 </html>
